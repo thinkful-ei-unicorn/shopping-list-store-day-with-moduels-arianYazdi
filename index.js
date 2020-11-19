@@ -8,6 +8,8 @@ const store = {
   hideCheckedItems: false
 };
 
+let x = 0
+
 const generateItemElement = function (item) {
   let itemTitle = `<span class='shopping-item shopping-item__checked'>${item.name}</span>`;
   if (!item.checked) {
