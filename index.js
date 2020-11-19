@@ -6,7 +6,10 @@ const store = {
     { id: cuid(), name: 'bread', checked: false }
   ],
   hideCheckedItems: false
+  
 };
+
+
 
 const generateItemElement = function (item) {
   let itemTitle = `<span class='shopping-item shopping-item__checked'>${item.name}</span>`;
@@ -26,9 +29,29 @@ const generateItemElement = function (item) {
         <button class='shopping-item-delete js-item-delete'>
           <span class='button-label'>delete</span>
         </button>
+        <button type='submit' class='edit-name js-item-edit'>
+          <span class='button-label'>rename</span>
+        </button>
+        <input type="text" name="newName" class="js-newName" placeholder="Enter new name">
       </div>
     </li>`;
 };
+const handleRename = function() {
+  $('.js-shopping-list').on('click', '.edit-name', evt => {
+    console.log('hi')
+  const id = getItemIdFromElement(evt.currentTarget)
+  getItemName(id)
+  })
+}
+
+
+const getItemName = function (id) {
+  let newName = $(evt.currentTarget).find('.js-newName').val()
+  let currentItem = store.items.find(item => {
+    return item.id === id
+  })
+  currentItem.name = newName
+}
 
 const generateShoppingItemsString = function (shoppingList) {
   const items = shoppingList.map((item) => generateItemElement(item));
@@ -160,6 +183,7 @@ const handleShoppingList = function () {
   handleItemCheckClicked();
   handleDeleteItemClicked();
   handleToggleFilterClick();
+  handleRename
 };
 
 // when the page loads, call `handleShoppingList`
