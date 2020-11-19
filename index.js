@@ -8,8 +8,11 @@ const store = {
   hideCheckedItems: false
 };
 
+<<<<<<< Updated upstream
 let x = 0
 
+=======
+>>>>>>> Stashed changes
 const generateItemElement = function (item) {
   let itemTitle = `<span class='shopping-item shopping-item__checked'>${item.name}</span>`;
   if (!item.checked) {
